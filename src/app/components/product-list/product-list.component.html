@@ -1,7 +1,28 @@
-{{products | json}}
-<br/>
-<br/>
-
 <div *ngFor="let product of products" class="card card-body mb-2">
-  {{product | json}}
+  <div class="row">
+    <div class="col-md-8">
+      <ul>
+        <li>
+          id: {{product._id}}
+        </li>
+        <li>
+            name: {{product.name}}
+        </li>
+        <li>
+            description: {{product.description}}
+        </li>
+        <li>
+            price: {{product.price}}
+        </li>
+        <li>
+            created at: {{product.createdAt}}
+        </li>
+      </ul>
+      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-secondary">Edit</button>
+    </div>
+    <div class="col-md-4">
+      <img [src]="product.imageUrl" alt="Image" class="card-img">
+    </div>
+  </div>
 </div>
