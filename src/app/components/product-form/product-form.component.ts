@@ -1,3 +1,4 @@
+import { ProductService } from './../../services/product.service';
 import { Product } from './../../interfaces/product';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,7 +17,9 @@ export class ProductFormComponent implements OnInit {
     new: true
   };
 
-  constructor() { }
+  constructor(
+    private productService: ProductService
+  ) { }
 
   ngOnInit() {
   }
@@ -24,7 +27,14 @@ export class ProductFormComponent implements OnInit {
   submitProduct() {
     console.log('Submit the product');
     console.log(this.product);
-
+    this.productService.createProduct(this.product).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }
