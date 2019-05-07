@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../interfaces/product';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +19,8 @@ export class ProductFormComponent implements OnInit {
   };
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -30,6 +32,7 @@ export class ProductFormComponent implements OnInit {
     this.productService.createProduct(this.product).subscribe(
       res => {
         console.log(res);
+        this.router.navigate(['/']);
       },
       err => {
         console.log(err);
