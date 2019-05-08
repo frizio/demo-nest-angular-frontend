@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-10 offset-md-1">
     <div class="card card-body">
-      <form (submit)="submitProduct()">
+      <form (submit)="edit ? updateProduct() : createProduct()">
         <div class="form-group">
           <input type="text" name="name" [(ngModel)]="product.name"
                  class="form-control" placeholder="Product name" autofocus>
